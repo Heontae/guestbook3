@@ -130,8 +130,9 @@ public class GuestbookDao {
 	}
 
 	// 사람 삭제
-	public void personDelete(int no, String pw) {
+	public int personDelete(int no, String pw) {
 		getConnection();
+		int count = 0;
 
 		try {
 			// 3. SQL문 준비 / 바인딩 / 실행
@@ -144,15 +145,17 @@ public class GuestbookDao {
 			pstmt.setInt(1, no);
 			pstmt.setString(2, pw);
 
-			pstmt.executeUpdate(); // 쿼리문 실행
+			count = pstmt.executeUpdate(); 
 
 			// 4.결과처리
+
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
 		}
 
 		close();
+		return count;
 	}
 
 }

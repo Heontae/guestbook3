@@ -15,14 +15,15 @@ import com.javaex.vo.GuestbookVo;
 @Controller
 @RequestMapping("/guest")
 public class GuestController {
-
+	private int count = 1;
+	
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public String list(Model model) {
 		GuestbookDao dao = new GuestbookDao();
 		List<GuestbookVo> gList = dao.getPersonList();
-
+		
+		model.addAttribute("count", count);
 		model.addAttribute("gList", gList);
-
 		return "/WEB-INF/views/addList.jsp";
 	}
 
@@ -45,9 +46,8 @@ public class GuestController {
 	public String deleteForm(@RequestParam("no") int no, @RequestParam("pw") String pw) {
 		GuestbookDao dao = new GuestbookDao();
 
-		dao.personDelete(no, pw);
-
-		
+		count = dao.personDelete(no, pw);
 		return "redirect:/guest/list";
+
 	}
 }

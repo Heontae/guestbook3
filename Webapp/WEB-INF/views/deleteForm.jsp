@@ -9,9 +9,9 @@
 </head>
 <body>
 	<form action="/guestbook3/guest/delete" method="get">
-		비밀번호 :<input type="text" name="pw">
+		비밀번호 :<input type="password" name="pw">
 		<button type="submit">확인</button>
-		<input type="text" name="no" value=${num }>
+		<input type="hidden" name="no" value=${num }>
 	</form>
 	<a href="/guestbook3/guest/list">메인으로 돌아가기</a>
 </body>

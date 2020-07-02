@@ -44,6 +44,9 @@
 		<br>
 	</c:forEach>
 
+	<c:if test="${count == 0}">
+		<h1>비밀번호가 틀렸습니다.</h1>
+	</c:if>
 
 </body>
 </html>
