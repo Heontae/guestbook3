@@ -58,9 +58,9 @@ public class GuestbookDao {
 	}
 
 	// 사람 추가
-	public void personInsert(GuestbookVo guestVo) {
+	public int personInsert(GuestbookVo guestVo) {
 		getConnection();
-
+		int count=0;
 		try {
 
 			// 3. SQL문 준비 / 바인딩 / 실행
@@ -75,7 +75,7 @@ public class GuestbookDao {
 			pstmt.setString(2, guestVo.getPw()); // ?(물음표) 중 2번째, 순서중요
 			pstmt.setString(3, guestVo.getContent()); // ?(물음표) 중 3번째, 순서중요
 
-			pstmt.executeUpdate(); // 쿼리문 실행
+			count = pstmt.executeUpdate(); // 쿼리문 실행
 
 			// 4.결과처리
 			// System.out.println("[" + count + "건 추가되었습니다.]");
@@ -84,6 +84,7 @@ public class GuestbookDao {
 			System.out.println("error:" + e);
 		}
 		close();
+		return count;
 	}
 
 	// 사람 출력하기
@@ -145,10 +146,9 @@ public class GuestbookDao {
 			pstmt.setInt(1, no);
 			pstmt.setString(2, pw);
 
-			count = pstmt.executeUpdate(); 
+			count = pstmt.executeUpdate();
 
 			// 4.결과처리
-
 
 		} catch (SQLException e) {
 			System.out.println("error:" + e);
