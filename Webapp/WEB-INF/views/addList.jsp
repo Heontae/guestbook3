@@ -35,7 +35,7 @@
 				<td>${gList.no }</td>
 				<td>${gList.name }</td>
 				<td>${gList.reg_date }</td>
-				<td><a href="${pageContext.request.contextPath }/guest/deleteForm/${gList.no }">삭제</a></td>
+				<td><a href="${pageContext.request.contextPath }/guest/deleteForm?num=${gList.no }">삭제</a></td>
 			</tr>
 			<tr height="50">
 				<td colspan="4">${gList.content }</td>
